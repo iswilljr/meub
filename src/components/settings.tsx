@@ -15,7 +15,7 @@ export function SettingsDialog() {
       <DialogTrigger>
         <IoSettingsSharp
           size={20}
-          className='duration-100 hover:text-neutral-600 dark:text-neutral-400 dark:hover:text-neutral-200'
+          className='duration-100 hover:text-gray-500 dark:text-neutral-400 dark:hover:text-neutral-200'
         />
       </DialogTrigger>
       <DialogContent>
