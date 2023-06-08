@@ -1,5 +1,6 @@
 {
-  "name": "vidconv",
+  "name": "meub",
+  "description": "Download M3U8 videos in different ways with this online M3U8 downloader",
   "version": "0.0.1",
   "private": true,
   "scripts": {
