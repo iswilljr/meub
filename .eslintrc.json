@@ -1,3 +1,13 @@
 {
-  "extends": "next/core-web-vitals"
+  "extends": ["next/core-web-vitals", "standard-with-typescript", "standard-jsx", "plugin:prettier/recommended"],
+  "parserOptions": {
+    "project": ["./tsconfig.json"]
+  },
+  "rules": {
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/promise-function-async": "off",
+    "@typescript-eslint/no-misused-promises": "off",
+    "@typescript-eslint/no-confusing-void-expression": "off",
+    "@typescript-eslint/strict-boolean-expressions": "off"
+  }
 }
