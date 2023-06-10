@@ -21,7 +21,11 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: React.PropsWithChildren) {
   return (
-    <html lang='en' className='[-webkit-tap-highlight-color:transparent] dark:bg-neutral-900 dark:text-white'>
+    <html
+      lang='en'
+      className='[-webkit-tap-highlight-color:transparent] dark:bg-neutral-900 dark:text-white'
+      suppressHydrationWarning
+    >
       <head>
         <link rel='icon' href='/favicon.svg' />
       </head>
