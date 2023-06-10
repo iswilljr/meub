@@ -14,12 +14,14 @@
     "@radix-ui/react-select": "1.2.2",
     "class-variance-authority": "0.6.0",
     "clsx": "1.2.1",
+    "m3u8-parser": "6.2.0",
     "next": "13.4.4",
     "next-themes": "0.2.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "4.9.0",
-    "tailwind-merge": "1.13.0"
+    "tailwind-merge": "1.13.0",
+    "zod": "3.21.4"
   },
   "devDependencies": {
     "@types/node": "20.2.5",
