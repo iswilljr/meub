@@ -5,9 +5,9 @@ import Link from 'next/link'
 
 export function Header() {
   return (
-    <div className='flex w-full items-center justify-between px-6 pt-6 text-gray-600 dark:text-neutral-400'>
+    <div className='flex h-16 w-full items-center justify-between px-6 text-gray-600 dark:text-neutral-400'>
       <Link className='flex items-center space-x-1' href='/'>
-        <Logo width={20} height={20} />
+        <Logo className='flex-shrink-0' width={20} height={20} />
         <h1 className='font-medium'>M3U8 downloader</h1>
       </Link>
       <div className='flex items-center space-x-3'>
