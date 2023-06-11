@@ -7,7 +7,7 @@ export default function Home() {
         <section className='relative mx-auto w-fit px-6 text-center'>
           <h1 className='mx-auto text-4xl font-bold'>Download M3U8 playlists and videos</h1>
           <p className='mx-auto mt-2 max-w-md text-lg text-gray-300 sm:max-w-xl'>
-            Introduce de M3U8 url, select the video to download and let the magic be done.
+            Introduce any url, select the video to download and let the magic be done.
           </p>
         </section>
         <section className='w-full px-6'>
