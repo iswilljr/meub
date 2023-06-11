@@ -27,7 +27,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
       return res.json({ playlists: [], info: [] })
     }
 
-    const playlists = result.data.raw
+    const playlists = result.data.raw.filter(url => new URL(url).pathname.replace(/\/+$/, '').endsWith('.m3u8'))
     const info = await Promise.all(playlists.map(parseM3U8))
 
     res.json({ playlists, info })
