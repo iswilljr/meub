@@ -1,5 +1,5 @@
 import { Logo } from '@/components/logo'
-import { SettingsDialog } from '@/components/settings'
+import { SettingsDialog } from '@/components/dialogs/settings'
 import { IoLogoGithub, IoLogoTwitter } from 'react-icons/io'
 import Link from 'next/link'
 

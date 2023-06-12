@@ -7,7 +7,7 @@ import { useMemo, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Button } from '@/ui/button'
-import { DownloadDialog, type ExtractedData, type ParsedData } from './download'
+import { DownloadDialog, type ExtractedData, type ParsedData } from './dialogs/download'
 
 interface ArgOptions {
   arg: string
