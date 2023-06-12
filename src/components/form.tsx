@@ -48,7 +48,7 @@ export function Form() {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      url: 'https://fast.wistia.com/embed/medias/agj9rjnxa4.m3u8',
+      url: '',
     },
     mode: 'onSubmit',
     resolver: zodResolver(form),
