@@ -13,6 +13,7 @@
     "@hookform/resolvers": "3.1.0",
     "@radix-ui/react-dialog": "1.0.4",
     "@radix-ui/react-select": "1.2.2",
+    "@radix-ui/react-tooltip": "1.0.6",
     "class-variance-authority": "0.6.0",
     "clsx": "1.2.1",
     "m3u8-parser": "6.2.0",
