@@ -5,9 +5,11 @@ import useSWRMutation from 'swr/mutation'
 import { z } from 'zod'
 import { useMemo, useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { shallow } from 'zustand/shallow'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Button } from '@/ui/button'
 import { DownloadDialog, type ExtractedData, type ParsedData } from './dialogs/download'
+import { useDownloadStore } from '@/store/downloads'
 
 interface ArgOptions {
   arg: string
@@ -24,6 +26,7 @@ async function requestEndpoint<T>(path: string, { arg }: ArgOptions) {
 
 export function Form() {
   const [open, setOpen] = useState(false)
+  const addDownload = useDownloadStore(state => state.addDownload, shallow)
 
   const {
     trigger: parseUrl,
@@ -45,6 +48,7 @@ export function Form() {
     register,
     handleSubmit,
     setError,
+    setValue,
     formState: { errors },
   } = useForm({
     defaultValues: {
@@ -75,7 +79,22 @@ export function Form() {
 
         const isM3U8File = url.pathname.replace(/\/+$/, '').endsWith('.m3u8')
 
-        ;(isM3U8File ? parseUrl(values.url) : extractUrl(values.url)).then(() => setOpen(true)).catch(() => null)
+        ;(isM3U8File ? parseUrl(values.url) : extractUrl(values.url))
+          .then(data => {
+            if (!data) return
+
+            if ('info' in data && data.info.length === 0) {
+              return setError('url', { message: 'Found 0 M3U8 files in this url' })
+            }
+
+            if ('downloadable' in data && data.downloadable) {
+              return addDownload({ url: values.url })
+            }
+
+            setOpen(true)
+            setValue('url', '', { shouldValidate: false })
+          })
+          .catch(() => null)
       })}
     >
       <div className='flex items-center'>

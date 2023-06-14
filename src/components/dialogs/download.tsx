@@ -1,7 +1,9 @@
 'use client'
 
 import { useMemo, useState } from 'react'
+import { shallow } from 'zustand/shallow'
 import { Button } from '@/ui/button'
+import { useDownloadStore } from '@/store/downloads'
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/ui/dialog'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/ui/select'
 import type { DialogProps } from '@radix-ui/react-dialog'
@@ -30,6 +32,7 @@ export function DownloadDialog({
 }: DialogProps & { parsedData?: ParsedData; extractedData?: ExtractedData }) {
   const [selectedPlaylist, setSelectedPlaylist] = useState('0')
   const [selectedPlaylistFormat, setSelectedPlaylistFormat] = useState('0')
+  const addDownload = useDownloadStore(state => state.addDownload, shallow)
 
   const playlists = useMemo(() => {
     const data = parsedData ?? extractedData?.info?.at(+selectedPlaylist)
@@ -81,7 +84,20 @@ export function DownloadDialog({
             </SelectContent>
           </Select>
         </div>
-        <Button type='button'>Download</Button>
+        <Button
+          type='button'
+          onClick={() => {
+            const playlist = playlists?.at(+selectedPlaylistFormat)
+
+            if (!playlist) return
+
+            addDownload({ url: playlist.uri })
+
+            props.onOpenChange?.(false)
+          }}
+        >
+          Download
+        </Button>
       </DialogContent>
     </Dialog>
   )
