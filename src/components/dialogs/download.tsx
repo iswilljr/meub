@@ -32,7 +32,7 @@ export function DownloadDialog({
 }: DialogProps & { parsedData?: ParsedData; extractedData?: ExtractedData }) {
   const [selectedPlaylist, setSelectedPlaylist] = useState('0')
   const [selectedPlaylistFormat, setSelectedPlaylistFormat] = useState('0')
-  const addDownload = useDownloadStore(state => state.addDownload, shallow)
+  const addDownload = useDownloadStore(state => state.setDownload, shallow)
 
   const playlists = useMemo(() => {
     const data = parsedData ?? extractedData?.info?.at(+selectedPlaylist)

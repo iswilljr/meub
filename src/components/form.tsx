@@ -26,7 +26,7 @@ async function requestEndpoint<T>(path: string, { arg }: ArgOptions) {
 
 export function Form() {
   const [open, setOpen] = useState(false)
-  const addDownload = useDownloadStore(state => state.addDownload, shallow)
+  const addDownload = useDownloadStore(state => state.setDownload, shallow)
 
   const {
     trigger: parseUrl,
