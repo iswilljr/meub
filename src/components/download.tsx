@@ -52,7 +52,7 @@ export function Download({ url, name }: DownloadProps) {
             </Tooltip>
           </div>
           <div className='flex items-start gap-1'>
-            <p className='line-clamp-1 break-all text-sm text-gray-200'>{url}</p>
+            <p className='line-clamp-1 break-all text-sm text-gray-600 dark:text-gray-200'>{url}</p>
             <Tooltip content='Copy URL'>
               <button aria-label='Copy URL'>
                 <IoCopyOutline size={12} />
@@ -60,9 +60,9 @@ export function Download({ url, name }: DownloadProps) {
             </Tooltip>
           </div>
           <p
-            className={cx('mt-1 flex items-start gap-1 text-xs text-gray-400', {
-              'text-green-500': status === DownloadStatus.Success,
-              'text-red-500': status === DownloadStatus.Error,
+            className={cx('mt-1 flex items-start gap-1 text-xs text-gray-500 dark:text-gray-400', {
+              'text-green-700 dark:text-green-500': status === DownloadStatus.Success,
+              'text-red-700 dark:text-red-500': status === DownloadStatus.Error,
             })}
           >
             {statusMessages[status].replace(
@@ -123,7 +123,11 @@ export function Download({ url, name }: DownloadProps) {
           className='w-full'
           aria-label='Retry'
           icon={<IoRefreshOutline size={16} />}
-          onClick={() => (status === DownloadStatus.Success ? setDownload(null) : window.location.reload())}
+          onClick={() =>
+            status === DownloadStatus.Success || status === DownloadStatus.Error || status === DownloadStatus.Idle
+              ? setDownload(null)
+              : window.location.reload()
+          }
         >
           Download Another
         </Button>

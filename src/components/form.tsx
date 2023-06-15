@@ -99,7 +99,7 @@ export function Form() {
     >
       <div className='flex items-center'>
         <input
-          className='bg-secondary-8/80 focus:border-primary-6 mr-0.5 mt-2 w-full rounded-l-full border-none bg-neutral-600/50 px-4 py-2 text-gray-300 outline-none ring-1 ring-neutral-700 duration-150  placeholder:text-neutral-500 focus:ring-2 hover:[&:not(:focus)]:ring-neutral-600'
+          className='ring-border-400 mr-0.5 mt-2 w-full rounded-l-full border-none bg-neutral-200/70 px-4 py-2 outline-none ring-1 duration-150 focus:ring-2 dark:bg-neutral-600/50 dark:text-gray-300  dark:ring-neutral-700 dark:placeholder:text-neutral-500 dark:hover:[&:not(:focus)]:ring-neutral-600'
           id='url'
           placeholder='https://example.com/my/playlist.m3u8'
           {...register('url')}
@@ -114,7 +114,7 @@ export function Form() {
       </div>
       {error && (
         <div className='mt-2'>
-          <p className='text-sm text-red-500'>{error}</p>
+          <p className='text-sm text-red-700 dark:text-red-500'>{error}</p>
         </div>
       )}
       <DownloadDialog parsedData={parsedUrlData} extractedData={extractedData} open={open} onOpenChange={setOpen} />

@@ -36,7 +36,8 @@ export function EditDownloadDialog({ download, ...props }: EditDownloadDialogPro
             </label>
             <Input id='name' ref={inputRef} defaultValue={download.name} placeholder='Enter the filename' />
             <p className='mt-2 text-xs'>
-              <strong>Note:</strong> <span className='text-gray-300'>don't include &quot;.mp4&quot; extension</span>
+              <strong>Note:</strong>{' '}
+              <span className='text-gray-700 dark:text-gray-300'>don't include &quot;.mp4&quot; extension</span>
             </p>
           </div>
           <Button>Update</Button>
