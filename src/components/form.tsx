@@ -84,7 +84,7 @@ export function Form() {
             if (!data) return
 
             if ('info' in data && data.info.length === 0) {
-              return setError('url', { message: 'Found 0 M3U8 files in this url' })
+              return setError('url', { message: 'No M3U8 files could be found in this url' })
             }
 
             if ('downloadable' in data && data.downloadable) {
