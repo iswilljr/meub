@@ -2,6 +2,7 @@
 
 import {
   IoCheckmarkCircleOutline,
+  IoCheckmarkOutline,
   IoCopyOutline,
   IoCreateOutline,
   IoDownloadOutline,
@@ -9,6 +10,7 @@ import {
 } from 'react-icons/io5'
 import { useMemo, useState } from 'react'
 import { shallow } from 'zustand/shallow'
+import { useClipboard } from 'use-clipboard-copy'
 import { cx } from '@/utils/cx'
 import { Button } from '@/ui/button'
 import { Tooltip } from '@/ui/tooltip'
@@ -29,6 +31,7 @@ export const statusMessages: Record<DownloadStatus, string> = {
 }
 
 export function Download({ url, name }: DownloadProps) {
+  const clipboard = useClipboard({ copiedTimeout: 1000 })
   const setDownload = useDownloadStore(state => state.setDownload, shallow)
   const [open, setOpen] = useState(false)
   const { blobUrl, error, retry, percentage, status } = useDownloader({ url })
@@ -54,8 +57,12 @@ export function Download({ url, name }: DownloadProps) {
           <div className='flex items-start gap-1'>
             <p className='line-clamp-1 break-all text-sm text-gray-600 dark:text-gray-200'>{url}</p>
             <Tooltip content='Copy URL'>
-              <button aria-label='Copy URL'>
-                <IoCopyOutline size={12} />
+              <button aria-label='Copy URL' onClick={() => clipboard.copy(url)}>
+                {clipboard.copied ? (
+                  <IoCheckmarkOutline className='text-green-700 dark:text-green-500' size={12} />
+                ) : (
+                  <IoCopyOutline size={12} />
+                )}
               </button>
             </Tooltip>
           </div>
