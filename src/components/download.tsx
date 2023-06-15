@@ -16,7 +16,7 @@ import { Button } from '@/ui/button'
 import { Tooltip } from '@/ui/tooltip'
 import { DownloadStatus, useDownloader } from '@/hooks/use-downloader'
 import { useDownloadStore, type Download as IDownload } from '@/store/downloads'
-import { EditDownloadDialog } from './dialogs/edit-name'
+import { EditOrDownloadDialog } from './dialogs/download'
 
 export interface DownloadProps extends IDownload {}
 
@@ -33,7 +33,9 @@ export const statusMessages: Record<DownloadStatus, string> = {
 export function Download({ url, name }: DownloadProps) {
   const clipboard = useClipboard({ copiedTimeout: 1000 })
   const setDownload = useDownloadStore(state => state.setDownload, shallow)
-  const [open, setOpen] = useState(false)
+  const [isDownloadOpen, setDownloadOpen] = useState(false)
+  const [isEditOpen, setEditOpen] = useState(false)
+
   const { blobUrl, error, retry, percentage, status } = useDownloader({ url })
 
   const percentageStr = useMemo(() => {
@@ -49,7 +51,7 @@ export function Download({ url, name }: DownloadProps) {
           <div className='flex items-start gap-1'>
             <h2 className='line-clamp-1 break-all text-lg font-semibold'>{`${name}.mp4`}</h2>
             <Tooltip content='Edit Download'>
-              <button aria-label='Edit Download' onClick={() => setOpen(true)}>
+              <button aria-label='Edit Download' onClick={() => setEditOpen(true)}>
                 <IoCreateOutline size={16} />
               </button>
             </Tooltip>
@@ -107,22 +109,9 @@ export function Download({ url, name }: DownloadProps) {
             aria-label='Download File'
             icon={<IoDownloadOutline size={16} />}
             disabled={!blobUrl}
-            onClick={() => {
-              if (!blobUrl) return
-
-              const anchor = document.createElement('a')
-
-              anchor.hidden = true
-              anchor.className = 'sr-only'
-              anchor.download = `${name}.mp4`
-              anchor.href = blobUrl
-
-              document.body.appendChild(anchor)
-              anchor.click()
-              anchor.remove()
-            }}
+            onClick={() => setDownloadOpen(true)}
           >
-            Download
+            Export
           </Button>
         )}
 
@@ -139,7 +128,14 @@ export function Download({ url, name }: DownloadProps) {
           Download Another
         </Button>
       </div>
-      <EditDownloadDialog open={open} onOpenChange={setOpen} download={{ name, url }} />
+      <EditOrDownloadDialog type='edit' open={isEditOpen} onOpenChange={setEditOpen} download={{ name, url }} />
+      <EditOrDownloadDialog
+        type='download'
+        url={blobUrl}
+        open={isDownloadOpen}
+        onOpenChange={setDownloadOpen}
+        download={{ name, url }}
+      />
     </div>
   )
 }
