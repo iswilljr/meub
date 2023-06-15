@@ -16,7 +16,8 @@ export const metadata: Metadata = {
     template: '%s | MEUB',
     default: 'Free M3U8 Downloader Online | MEUB',
   },
-  description: 'Download M3U8 videos in different ways with this online M3U8 downloader',
+  description:
+    'Download M3U8 videos from any website with this online M3U8 downloader. Insert a direct m3u8 url or extract m3u8 files from websites, then download them!',
 }
 
 export default function RootLayout({ children }: React.PropsWithChildren) {
