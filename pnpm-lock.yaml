@@ -26,6 +26,9 @@ dependencies:
   clsx:
     specifier: 1.2.1
     version: 1.2.1
+  just-split:
+    specifier: 3.2.0
+    version: 3.2.0
   m3u8-parser:
     specifier: 6.2.0
     version: 6.2.0
@@ -2673,6 +2676,10 @@ packages:
       array-includes: 3.1.6
       object.assign: 4.1.4
     dev: true
+
+  /just-split@3.2.0:
+    resolution: {integrity: sha512-hh57dN5koTBkmg3T6gBFISVVaW5bgZ6Ct1W5KODD5M7hQJKqGzTKkfMwOil8MBxyztLQEjh/v6UGXE8cP5tnqQ==}
+    dev: false
 
   /language-subtag-registry@0.3.22:
     resolution: {integrity: sha512-tN0MCzyWnoz/4nHS6uxdlFWoUZT7ABptwKPQ52Ea7URk6vll88bWBVhodtnlfEuCcKWNGoc+uGbw1cwa9IKh/w==}
