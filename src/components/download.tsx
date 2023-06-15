@@ -16,7 +16,7 @@ import { Button } from '@/ui/button'
 import { Tooltip } from '@/ui/tooltip'
 import { DownloadStatus, useDownloader } from '@/hooks/use-downloader'
 import { useDownloadStore, type Download as IDownload } from '@/store/downloads'
-import { EditDownloadDialog } from './dialogs/edit-download'
+import { EditDownloadDialog } from './dialogs/edit-name'
 
 export interface DownloadProps extends IDownload {}
 

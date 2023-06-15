@@ -8,7 +8,7 @@ import { useForm } from 'react-hook-form'
 import { shallow } from 'zustand/shallow'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { Button } from '@/ui/button'
-import { DownloadDialog, type ExtractedData, type ParsedData } from './dialogs/download'
+import { PlaylistOptionsDialog, type ExtractedData, type ParsedData } from './dialogs/playlist-options'
 import { useDownloadStore } from '@/store/downloads'
 
 interface ArgOptions {
@@ -117,7 +117,12 @@ export function Form() {
           <p className='text-sm text-red-700 dark:text-red-500'>{error}</p>
         </div>
       )}
-      <DownloadDialog parsedData={parsedUrlData} extractedData={extractedData} open={open} onOpenChange={setOpen} />
+      <PlaylistOptionsDialog
+        parsedData={parsedUrlData}
+        extractedData={extractedData}
+        open={open}
+        onOpenChange={setOpen}
+      />
     </form>
   )
 }

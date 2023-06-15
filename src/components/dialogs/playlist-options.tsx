@@ -25,7 +25,7 @@ const getPlaylistName = (playlist?: Playlist) => {
   return name ?? (resolution ? `${resolution.width}x${resolution?.height}` : 'video')
 }
 
-export function DownloadDialog({
+export function PlaylistOptionsDialog({
   extractedData,
   parsedData,
   ...props
