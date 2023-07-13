@@ -44,7 +44,7 @@ export function PlaylistOptionsDialog({
 
   return (
     <Dialog {...props}>
-      <DialogContent className='max-w-none'>
+      <DialogContent>
         <DialogHeader>
           <DialogTitle>Download Playlist Options</DialogTitle>
         </DialogHeader>
@@ -68,7 +68,7 @@ export function PlaylistOptionsDialog({
               </Select>
             </>
           )}
-          <label className='text-sm' htmlFor='format'>
+          <label className='block text-sm' htmlFor='format'>
             Format:
           </label>
           <Select value={selectedPlaylistFormat} onValueChange={setSelectedPlaylistFormat}>
