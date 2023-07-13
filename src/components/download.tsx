@@ -39,7 +39,7 @@ export function Download({ url, name }: DownloadProps) {
   const { blobUrl, error, retry, percentage, status } = useDownloader({ url })
 
   const percentageStr = useMemo(() => {
-    const n = status === DownloadStatus.Error ? 0 : status === DownloadStatus.Success ? 100 : percentage
+    const n = status === DownloadStatus.Error ? 0 : percentage
 
     return `${n}%`
   }, [percentage, status])

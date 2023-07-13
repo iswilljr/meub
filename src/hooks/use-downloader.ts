@@ -18,6 +18,8 @@ export enum DownloadStatus {
   Error = 'Error',
 }
 
+const MAX_PERCENTAGE = 100
+
 export function useDownloader({ url }: DownloaderOptions) {
   const ffmpeg = useFFmpeg()
   const [blobUrl, setBlobUrl] = useState<string | null>(null)
@@ -72,8 +74,8 @@ export function useDownloader({ url }: DownloaderOptions) {
             ffmpeg.FS('writeFile', fileId, await fetchFile(file))
 
             downloaded.push(fileId)
-            const percentage = Math.floor(((segment.index + 1) / segments.length) * 100)
-            setPercentage(prev => (percentage < prev ? prev : percentage))
+            const percentage = Math.floor(((segment.index + 1) / segments.length) * MAX_PERCENTAGE)
+            setPercentage(prev => (percentage < prev || percentage >= MAX_PERCENTAGE ? prev : percentage))
           })
         )
       }
@@ -95,6 +97,7 @@ export function useDownloader({ url }: DownloaderOptions) {
 
         const blob = URL.createObjectURL(new Blob([data.buffer], { type: 'video/mp4' }))
 
+        setPercentage(MAX_PERCENTAGE)
         setStatus(DownloadStatus.Success)
         setBlobUrl(blob)
       } catch (error) {
