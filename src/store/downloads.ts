@@ -1,4 +1,4 @@
-import { create } from 'zustand'
+import { createWithEqualityFn } from 'zustand/traditional'
 
 export interface Download {
   url: string
@@ -12,7 +12,7 @@ export interface DownloadState {
   setDownload: (download: SetDownloadInput | null) => void
 }
 
-export const useDownloadStore = create<DownloadState>(set => ({
+export const useDownloadStore = createWithEqualityFn<DownloadState>(set => ({
   download: null,
   setDownload: download =>
     set(state => ({

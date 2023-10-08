@@ -1,4 +1,4 @@
-import { create } from 'zustand'
+import { createWithEqualityFn } from 'zustand/traditional'
 import { shallow } from 'zustand/shallow'
 import { createFFmpeg, type FFmpeg } from '@ffmpeg/ffmpeg'
 
@@ -6,7 +6,7 @@ export interface DownloadState {
   ffmpeg: FFmpeg
 }
 
-export const useFFmpegStore = create<DownloadState>(set => {
+export const useFFmpegStore = createWithEqualityFn<DownloadState>(set => {
   const ffmpeg = createFFmpeg({
     corePath: 'https://unpkg.com/@ffmpeg/core@0.11.0/dist/ffmpeg-core.js',
     log: false,

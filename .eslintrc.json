@@ -9,5 +9,6 @@
     "@typescript-eslint/no-misused-promises": "off",
     "@typescript-eslint/no-confusing-void-expression": "off",
     "@typescript-eslint/strict-boolean-expressions": "off"
-  }
+  },
+  "ignorePatterns": ["next.config.js", "postcss.config.js", "tailwind.config.js"]
 }

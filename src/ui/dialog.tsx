@@ -7,10 +7,7 @@ import { cx } from '@/utils/cx'
 
 const Dialog = DialogPrimitive.Root
 const DialogTrigger = DialogPrimitive.Trigger
-
-const DialogPortal = ({ className, ...props }: DialogPrimitive.DialogPortalProps) => (
-  <DialogPrimitive.Portal className={cx(className)} {...props} />
-)
+const DialogPortal = DialogPrimitive.Portal
 
 const DialogOverlay = React.forwardRef<
   React.ElementRef<typeof DialogPrimitive.Overlay>,
